@@ -1,14 +1,11 @@
 {
   "name": "carpool",
   "version": "1.0.0",
-  "description": "Carpool Service Texting Integration with Twilio and Slack",
-  "main": "index.js",
+  "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "axios": "^1.4.0"
   }
