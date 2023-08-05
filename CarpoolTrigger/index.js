@@ -6,8 +6,8 @@ module.exports = async function (context, req) {
     const slackWebhookUrl = process.env.SlackWebhook;
 
     try {
-        const decodedData = Buffer.from(req.body, 'base64');
-        const params = new URLSearchParams(decodedData.toString('utf-8').trim());
+        const params = new URLSearchParams(req.body.toString('utf-8').trim());
+        context.log("PARAMS:", params);
         const parsedData = {};
         
         for (const [key, value] of params) {
@@ -17,11 +17,14 @@ module.exports = async function (context, req) {
         fromNum = parsedData['From'];
         msg = parsedData['Body'];
 
+        context.log("FROM:", fromNum);
+        context.log("MESSAGE:", msg);
+
     } catch (error) {
         console.log('Error decoding data:', error);
     }
     
-    const message = `\n*Carpool Request*\n${fromNum}\n${msg}`;
+    const message = `\n*Carpool Request*\nFrom: ${fromNum}\nMessage: ${msg}`;
 
     const slackMessage = {
 	    text: message,
